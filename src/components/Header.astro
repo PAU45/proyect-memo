@@ -1,0 +1,211 @@
+<header style="background-color: #ffec83; position: absolute; top: 0; left: 0; width: 100%; z-index: 10001; padding: 1.2rem 0 0.7rem 0; box-shadow: 0 4px 24px #0002; transition: box-shadow 0.3s;">
+  <div style="max-width: 1100px; margin: auto; display: flex; align-items: flex-start; justify-content: space-between;">
+    <div>
+      <img src="/public/img/logo-memo.png"  width="90" height="90" style="width:90px; height:90px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.07)'" onmouseout="this.style.transform='scale(1)'"/>
+    </div>
+    <nav style="flex: 1; display: flex; justify-content: center; align-items: flex-start; gap: 2rem; margin-top: 23px;">
+      <a href="/" class="nav-link">Inicio</a>
+      <!--<a href="/menu" class="nav-link">Menú</a>-->
+      <a href="/nosotros" class="nav-link">Nosotros</a>
+      <a href="/platos" class="nav-link">Platos</a>
+    </nav>
+    <a href="https://api.whatsapp.com/send/?phone=%2B51977605383&text=Hola+quiero+hacer+una+consulta&type=phone_number&app_absent=0" class="btn-reservar">
+      Reservar mesa
+    </a>
+    <div class="mobile-toggle" style="display:none; align-items:center;">
+      <button id="hdrToggle" aria-expanded="false" aria-label="Abrir menú" style="background:transparent;border:0;padding:0.3rem;border-radius:8px;cursor:pointer;font-size:1.6rem;">☰</button>
+    </div>
+    <!-- Mobile overlay menu -->
+    <div id="mobileMenu" class="mobile-menu" role="menu" aria-hidden="true">
+      <div class="panel">
+        <a href="/" role="menuitem">Inicio</a>
+        <a href="/nosotros" role="menuitem">Nosotros</a>
+        <a href="/platos" role="menuitem">Platos</a>
+        <a href="https://api.whatsapp.com/send/?phone=%2B51977605383&text=Hola+quiero+hacer+una+consulta&type=phone_number&app_absent=0" role="menuitem">Reservar mesa</a>
+      </div>
+    </div>
+    <!-- Enlaces duplicados eliminados -->
+  </div>
+  <style>
+  /* Variables globales y evita salto cuando aparece/desaparece la barra de scroll */
+  :root { --header-height: 100px; --logo-size: 90px; --header-bg: #ffec83; }
+    html { overflow-y: scroll; }
+    .nav-link {
+      color: #000;
+      font-size: 25px;
+      font-weight: 500;
+      text-decoration: none;
+      position: relative;
+      padding: 0.2em 0.5em;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      background: #ffb006;
+      border-radius: 2px;
+      transition: width 0.3s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    .nav-link:hover {
+      color: #ffb006;
+      text-shadow: 0 2px 8px #ffb00644;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .btn-reservar {
+      background: #ffb006;
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      border: 2px solid #ffb006;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.15rem;
+      margin-top: 18px;
+      box-shadow: 0 2px 12px #ffb00644;
+      transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+      outline: none;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-reservar:hover {
+      background: #8d5524;
+      color: #fff;
+      border-color: #8d5524;
+      box-shadow: 0 4px 24px #8d552444;
+    }
+    @media (max-width: 900px) {
+      nav {
+        gap: 1rem !important;
+      }
+      .nav-link {
+        font-size: 20px;
+      }
+      .btn-reservar {
+        padding: 0.7rem 1.2rem;
+        font-size: 1rem;
+      }
+      img {
+        height: 80px !important;
+      }
+    }
+    /* ocultar la navegación horizontal y el botón reservar hasta 1200px y forzar el toggle */
+    @media (max-width: 1200px) {
+      nav { display: none !important; }
+      .btn-reservar { display: none !important; }
+      .mobile-toggle { display: inline-flex !important; margin-left: auto; }
+      .mobile-toggle button { display: inline-flex !important; }
+      #mobileMenu { display: flex !important; }
+    }
+    @media (min-width: 1201px) {
+      #mobileMenu { display: none !important; }
+    }
+    /* Solución: ocultar el menú móvil en desktop y ocultar el nav en mobile para evitar duplicados */
+    @media (max-width: 900px) {
+      nav { display: none !important; }
+      #mobileMenu { display: flex !important; }
+      .mobile-toggle { display: inline-flex !important; }
+    }
+    @media (min-width: 901px) {
+      #mobileMenu { display: none !important; }
+      nav { display: flex !important; }
+      .mobile-toggle { display: none !important; }
+    }
+    @media (max-width: 1000px) {
+      /* Mantener header en una fila: logo a la izquierda, toggle a la derecha */
+      header > div {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 0.4rem 0.6rem !important;
+        gap: 0.5rem;
+      }
+      nav { display: none !important; }
+      .mobile-toggle { display: inline-flex !important; margin-left: auto; }
+      .mobile-toggle button { display: inline-flex; }
+      .nav-link { font-size: 1.1rem !important; padding: 0.5em 0.8em !important; }
+      img { display: block !important; margin: 0 !important; height: 60px !important; width: 60px !important; }
+      /* Oculta el botón reservar en vista móvil */
+      .btn-reservar { display: none !important; }
+  /* overlay móvil: abre debajo del header para que el header siga visible */
+  /* En móvil pegamos el panel al header: sin sombra en header y sin espacio entre header y panel */
+  header { z-index: 10001; box-shadow: none !important; border-bottom: none !important; background: var(--header-bg); }
+  /* animated dropdown: hidden by default (collapsed) and animates when .open is added */
+  .mobile-menu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(var(--header-height, 110px));
+    background: transparent;
+    border-radius: 0 0 12px 12px;
+    box-shadow: none;
+    z-index: 9999;
+    padding: 0;
+    flex-direction: column;
+    gap: 0.25rem;
+    max-width: 100%;
+    /* collapsed state */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 240ms ease, transform 240ms ease, max-height 320ms ease, visibility 1ms linear 240ms;
+  }
+  /* panel interior: fondo separado pero pegado al header, limitar altura y hacer scroll si hay muchas entradas */
+  .mobile-menu .panel { padding: 0.6rem; display: flex; flex-direction: column; gap: 0.6rem; max-height: 52vh; overflow-y: auto; background: #fff8ea; border-radius: 0 0 12px 12px; }
+  .mobile-menu.open {
+    /* expanded state */
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 60vh;
+    transition: opacity 260ms ease, transform 260ms ease, max-height 360ms ease, visibility 0s linear;
+    overflow: visible;
+    display: flex;
+  }
+  .mobile-menu a { display: block; padding: 0.9rem 1rem; border-radius: 8px; color: #111; text-decoration: none; font-weight: 700; }
+  .mobile-menu a:hover { background: #ffefc9; color: #d35400; }
+    }
+  </style>
+  <script>
+    (function(){
+      const toggle = document.getElementById('hdrToggle');
+      const menu = document.getElementById('mobileMenu');
+      if (!toggle || !menu) return;
+      const openMenu = () => {
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden','false');
+        toggle.setAttribute('aria-expanded','true');
+      };
+      const closeMenu = () => {
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden','true');
+        toggle.setAttribute('aria-expanded','false');
+      };
+      toggle.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        if (menu.classList.contains('open')) closeMenu(); else openMenu();
+      });
+      // cerrar al click fuera (comprobación segura de target)
+      document.addEventListener('click', (e)=>{
+        const t = e.target;
+        if (!(t instanceof Node)) return;
+        if (!menu.contains(t) && !toggle.contains(t)) closeMenu();
+      });
+      // cerrar con Escape para accesibilidad
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+      // cerrar al navegar por accesos del menu
+      menu.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=> closeMenu()));
+    })();
+  </script>
+</header>

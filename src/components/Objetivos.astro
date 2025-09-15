@@ -1,0 +1,76 @@
+<style>
+  .obj-cards {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .obj-card {
+    background: #fff7ec;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 2rem 1.5rem;
+    flex: 1 1 250px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .obj-card.visible {
+    opacity: 1;
+    transform: none;
+    transition: opacity 1s, transform 1s;
+  }
+  .obj-card:hover {
+    transform: perspective(600px) rotateY(8deg) scale(1.04);
+    box-shadow: 0 12px 40px #d3540055;
+  }
+  @media (max-width: 900px) {
+    .obj-cards {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .obj-card {
+      max-width: 98vw;
+    }
+  }
+</style>
+<section style="max-width: 1100px; margin: 3rem auto; padding: 2rem 0;">
+  <h2 style="text-align: center; font-family: 'Abril Fatface', serif; font-size: 2rem; margin-bottom: 2.5rem;">
+    Nuestro objetivo es que disfrutes el sabor del corazón puro
+  </h2>
+  <div class="obj-cards">
+    <div class="obj-card">
+      <img src="/public/img/parrilla.png" alt="Sabor auténtico" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Sabor auténtico</h3>
+      <p style="color: #444;">Preparamos cada plato con recetas tradicionales y pasión por la cocina peruana.</p>
+    </div>
+    <div class="obj-card">
+      <img src="/img/familia.png" alt="Ambiente familiar" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Ambiente familiar</h3>
+      <p style="color: #444;">Queremos que cada visita sea una experiencia cálida y memorable para ti y tu familia.</p>
+    </div>
+    <div class="obj-card">
+      <img src="/public/img/campana.png" alt="Calidad garantizada" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Calidad garantizada</h3>
+      <p style="color: #444;">Seleccionamos los mejores ingredientes para ofrecerte siempre lo mejor.</p>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.obj-card');
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      cards.forEach(el => observer.observe(el));
+    });
+  </script>
+</section>

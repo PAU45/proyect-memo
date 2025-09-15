@@ -1,0 +1,124 @@
+<section 
+  style="
+    position: relative;
+      margin-top: 110px;
+    padding: 5rem 0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+  "
+>
+  <!-- Fondo con blur -->
+  <div 
+    style="
+      position: absolute;
+      inset: 0;
+      background: url('/public/img/anticuchos-en-lima.jpg') center/cover no-repeat;
+      filter: brightness(60%);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+    "
+  ></div>
+  
+  <!-- Contenido Hero -->
+  <div
+    style="
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      color: #fff;
+      text-shadow: 0 2px 16px #000a;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeInHero 1.2s ease;
+    "
+  >
+    <div style="flex: 1 1 400px; min-width: 320px;">
+      <h2 style="font-size: 4.8rem; margin-bottom: 1rem; letter-spacing: -2px; animation: slideDown 1.2s cubic-bezier(.4,1.7,.6,.95);">
+        ¡Los mejores anticuchos de la ciudad!
+      </h2>
+      <p style="font-size: 2.3rem; margin-bottom: 2rem; animation: fadeInHero 1.8s;">
+        Disfruta el auténtico sabor peruano en cada bocado. Tradición, sazón y calidad en cada plato.
+      </p>
+      <div style="display: flex; gap: 1rem;">
+        <a href="https://api.whatsapp.com/send/?phone=%2B51977605383&text=Hola+quiero+hacer+una+consulta&type=phone_number&app_absent=0" style="
+          background: #ffb006;
+          color: #fff;
+          padding: 1rem 2rem;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.1rem;
+          border: none;
+          transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        " onmouseover="this.style.background='#8d5524';this.style.transform='scale(1.06)';this.style.boxShadow='0 4px 24px #8d552444';"
+          onmouseout="this.style.background='#ffb006';this.style.transform='scale(1)';this.style.boxShadow='0 2px 12px #ffb00644';">
+          Reservar mesa
+        </a>
+       <!-- <a href="/menu" style="
+          background: #fff;
+          color: #ffb006;
+          border: 2px solid #ffb006;
+          padding: 1rem 2rem;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.1rem;
+          transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+        " 
+        onmouseover="this.style.background='#8d5524';this.style.color='#fff';this.style.transform='scale(1.06)';this.style.boxShadow='0 4px 24px #8d552444';this.style.borderColor='#ffb006';"
+        onmouseout="this.style.background='#fff';this.style.color='#ffb006';this.style.transform='scale(1)';this.style.boxShadow='none';this.style.borderColor='#ffb006';">
+          Ver menú
+        </a> -->
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes fadeInHero {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: none;}
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-60px);}
+      to { opacity: 1; transform: none;}
+    }
+    @media (max-width: 700px) {
+      section {
+        padding: 2rem 0 !important;
+        min-height: 320px !important;
+      }
+      .hero-content {
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+        padding: 0 0.5rem !important;
+        text-align: center !important;
+      }
+      h2 {
+        font-size: 2.2rem !important;
+        margin-bottom: 0.7rem !important;
+      }
+      p {
+        font-size: 1.1rem !important;
+        margin-bottom: 1.2rem !important;
+      }
+      .btn-reservar, a[style*="background: #ffb006"] {
+        padding: 0.7rem 1.2rem !important;
+        font-size: 1rem !important;
+        border-radius: 22px !important;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        display: block !important;
+      }
+    }
+  </style>
+</section>

@@ -1,0 +1,76 @@
+<style>
+  .mv-cards {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .mv-card {
+    background: #fff7ec;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 2rem 1.5rem;
+    flex: 1 1 250px;
+    max-width: 320px;
+    text-align: center;
+    transition: transform 0.5s, box-shadow 0.5s;
+    will-change: transform;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .mv-card.visible {
+    opacity: 1;
+    transform: none;
+    transition: opacity 1s, transform 1s;
+  }
+  .mv-card:hover {
+    transform: perspective(600px) rotateY(8deg) scale(1.04);
+    box-shadow: 0 12px 40px #d3540055;
+  }
+  @media (max-width: 900px) {
+    .mv-cards {
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .mv-card {
+      max-width: 98vw;
+    }
+  }
+</style>
+<section style="max-width: 1100px; margin: 3rem auto; padding: 2rem 0;">
+  <h2 style="text-align: center; font-family: 'Abril Fatface', serif; font-size: 2rem; margin-bottom: 2.5rem;">
+    Misión, Visión y Valores
+  </h2>
+  <div class="mv-cards">
+    <div class="mv-card">
+      <img src="/img/target.png" alt="Misión" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Misión</h3>
+      <p style="color: #444;">Brindar el auténtico sabor peruano con calidad y calidez, haciendo que cada cliente se sienta parte de nuestra familia.</p>
+    </div>
+    <div class="mv-card">
+      <img src="/img/vision.png" alt="Visión" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Visión</h3>
+      <p style="color: #444;">Ser reconocidos como la anticuchería más querida de Lima, expandiendo nuestra tradición y sabor a más familias.</p>
+    </div>
+    <div class="mv-card">
+      <img src="/img/profit.png" alt="Valores" style="height: 80px; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.3rem; margin-bottom: 0.7rem;">Valores</h3>
+      <p style="color: #444;">Pasión, respeto, honestidad y compromiso con nuestros clientes y la cultura peruana.</p>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.mv-card');
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      cards.forEach(el => observer.observe(el));
+    });
+  </script>
+</section>

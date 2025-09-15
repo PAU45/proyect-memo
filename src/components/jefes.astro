@@ -1,0 +1,126 @@
+<style>
+  .jefes-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 3rem auto;
+    background: linear-gradient(120deg, #fff7ec 60%, #ffe5c0 100%);
+    border-radius: 24px;
+    box-shadow: 0 6px 32px #0001;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.97);
+    animation: fadeInSection 1.2s cubic-bezier(.77,0,.175,1) forwards;
+  }
+  @keyframes fadeInSection {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .jefes-titulo {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: color 0.5s, opacity 1s, transform 1s;
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  .jefes-titulo.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .jefes-titulo:hover {
+    color: #ffb006;
+  }
+  .jefes-titulo-underline {
+    position: absolute;
+    left: 0; bottom: -8px;
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, #ffb006, #ffe5c0);
+    border-radius: 2px;
+    transition: width 1s cubic-bezier(.77,0,.175,1);
+  }
+  .jefes-titulo.visible .jefes-titulo-underline {
+    width: 60px;
+  }
+  .jefes-frase {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: color 0.5s, opacity 1s, transform 1s;
+  }
+  .jefes-frase.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .jefes-frase:hover {
+    color: #d35400;
+  }
+  @keyframes fadeInFrase {
+    to { opacity: 1; }
+  }
+  .jefes-img {
+    max-width: 350px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #ffb00655;
+    transition: transform 0.4s, box-shadow 0.4s, border 0.4s;
+    border: 3px solid transparent;
+  }
+  .jefes-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px #ffb00699;
+    border: 3px solid #ffb006;
+  }
+  @media (max-width: 900px) {
+    .jefes-section {
+      flex-direction: column;
+      padding: 1.5rem 0.5rem !important;
+    }
+    .jefes-img {
+      max-width: 90vw !important;
+    }
+  }
+</style>
+<section class="jefes-section">
+  <div style="flex: 1;">
+    <h2 class="jefes-titulo" id="jefes-titulo">
+      Hola, somos la anticuchería carretillero más apreciada de todo Santa Anita
+      <span class="jefes-titulo-underline"></span>
+    </h2>
+    <hr style="width: 60px; border: 2px solid #ffb006; margin: 1rem 0 1.5rem 0; border-radius: 2px;">
+    <p style="font-size: 1.2rem; color: #444;">
+      Fundada por emprendedores apasionados, nuestra misión es compartir el auténtico sabor peruano y brindar momentos inolvidables a cada cliente. ¡Gracias por preferirnos!
+    </p>
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <img src="/public/img/jefes.JPG" alt="Empresarios de la Anticuchería" class="jefes-img">
+    <p class="jefes-frase" style="margin-top: 1rem; font-style: italic; color: #8d5524; font-size: 1.1rem;">
+      “Con esfuerzo y corazón, llevamos el mejor anticucho a tu mesa.”
+    </p>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const targets = [
+        document.getElementById('jefes-titulo'),
+        document.querySelector('.jefes-frase')
+      ];
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      targets.forEach(el => { if (el) observer.observe(el); });
+    });
+  </script>
+</section>

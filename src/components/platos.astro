@@ -1,0 +1,87 @@
+<style>
+  .platos-article {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    background: none;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s, transform 1s;
+    will-change: transform;
+  }
+  .platos-article.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .platos-article img {
+    flex: 1 1 350px;
+    max-width: 420px;
+    border-radius: 24px;
+    box-shadow: 0 4px 24px #0002;
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+  .platos-article img:hover {
+    transform: perspective(600px) rotateY(8deg) scale(1.04);
+    box-shadow: 0 12px 40px #d3540055;
+  }
+  @media (max-width: 900px) {
+    .platos-article {
+      flex-direction: column !important;
+      gap: 1.2rem;
+      align-items: center !important;
+      justify-content: flex-start !important;
+    }
+    .platos-article.reverse-mobile {
+      flex-direction: column-reverse !important;
+    }
+    .platos-article img {
+      max-width: 98vw !important;
+    }
+  }
+</style>
+<section style="max-width: 1200px; margin: 4rem auto; padding: 0 1rem;">
+  <h2 style="text-align: center; font-family: 'Abril Fatface', serif; font-size: 2.5rem; margin-bottom: 2.5rem;">
+    Platos principales
+  </h2>
+  <article class="platos-article">
+    <img src="/img/Anticucho-p.jpg" alt="Anticuchos" style="flex: 1 1 350px; max-width: 420px; border-radius: 24px; box-shadow: 0 4px 24px #0002;">
+    <div style="flex: 2 1 400px;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 2rem; margin-bottom: 1rem;">Anticuchos</h3>
+      <p style="font-size: 1.15rem; color: #444; line-height: 1.7;">
+        El anticucho es mucho más que un plato: es tradición, historia y sabor peruano en cada bocado. Preparado con corazón de res marinado en ají panca, ajo y especias, se asa al carbón y se sirve con papas doradas y salsa de ají. En nuestra anticuchería, cada anticucho cuenta una historia de familia, de barrio y de pasión por la buena comida. ¡Ven y descubre por qué es el favorito de Santa Anita!
+      </p>
+    </div>
+  </article>
+  <article class="platos-article reverse-mobile">
+    <div style="flex: 2 1 400px;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 2rem; margin-bottom: 1rem;">Rachi Peruano</h3>
+      <p style="font-size: 1.15rem; color: #444; line-height: 1.7;">
+        El rachi peruano es un manjar tradicional hecho a base de panza de res, cuidadosamente limpiada, sazonada y asada a la parrilla. Crujiente por fuera y suave por dentro, el rachi es perfecto para quienes buscan sabores auténticos y texturas únicas. Se sirve acompañado de papas y ají, siendo uno de los favoritos en las carretillas limeñas.
+      </p>
+    </div>
+    <img src="/public/img/rachi.jpg" alt="Rachi Peruano" style="flex: 1 1 350px; max-width: 420px; border-radius: 24px; box-shadow: 0 4px 24px #0002;">
+  </article>
+  <article class="platos-article">
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const articles = document.querySelectorAll('.platos-article');
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      articles.forEach(el => observer.observe(el));
+    });
+  </script>
+    <img src="/img/pollo.webp" alt="Pollo a la Parrilla" style="flex: 1 1 350px; max-width: 420px; border-radius: 24px; box-shadow: 0 4px 24px #0002;">
+    <div style="flex: 2 1 400px;">
+      <h3 style="font-family: 'Abril Fatface', serif; font-size: 2rem; margin-bottom: 1rem;">Pollo a la Parrilla</h3>
+      <p style="font-size: 1.15rem; color: #444; line-height: 1.7;">
+        Nuestro pollo a la parrilla es marinado con especias peruanas y asado lentamente sobre brasas, logrando una piel dorada y carne jugosa. Se sirve acompañado de papas doradas y ensalada fresca, ideal para quienes buscan un sabor auténtico y saludable.
+      </p>

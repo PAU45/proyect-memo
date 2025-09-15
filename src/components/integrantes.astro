@@ -1,0 +1,130 @@
+<style>
+  .integrantes-section {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 2rem 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s, transform 1.2s;
+  }
+  .integrantes-section.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .integrantes-title {
+    text-align: center;
+    font-family: 'Abril Fatface', serif;
+    font-size: 2.3rem;
+    margin-bottom: 2.5rem;
+    color: #8d5524;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .integrantes-title:hover {
+    color: #ffb006;
+  }
+  .integrantes-card {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    background: #fff7ec;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s, transform 1.2s;
+  }
+  .integrantes-card.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .integrantes-img {
+    height: 520px;
+    width: 420px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 6px 32px #ffb00644;
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+  .integrantes-img:hover {
+    transform: perspective(600px) rotateY(8deg) scale(1.04);
+    box-shadow: 0 12px 40px #d3540055;
+  }
+  .integrantes-card h3,
+  .integrantes-card p {
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+  .integrantes-card h3:hover,
+  .integrantes-card p:hover {
+    color: #ffb006;
+  }
+  @media (max-width: 900px) {
+    .integrantes-card {
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 1.2rem 0.5rem;
+    }
+    .integrantes-img {
+      width: 98vw !important;
+      height: auto !important;
+      min-width: 0 !important;
+    }
+  }
+</style>
+<section class="integrantes-section">
+  <h2 class="integrantes-title">Nuestro equipo</h2>
+  <div>
+    <!-- Oscar Garcia -->
+    <div class="integrantes-card">
+      <img src="/img/MEMO.JPG" alt="Oscar Garcia" class="integrantes-img">
+      <div style="flex: 1 1 300px;">
+        <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.7rem; margin-bottom: 1rem;">Oscar Garcia</h3>
+        <p style="color: #444; font-size: 1.18rem; line-height: 1.7;">Fundador y maestro anticuchero. Oscar ha dedicado su vida a perfeccionar la receta tradicional y liderar el equipo con pasión y compromiso. Su experiencia y amor por la cocina peruana son el corazón de nuestro restaurante.</p>
+      </div>
+    </div>
+    <!-- Fiorela Melendez -->
+  
+    <!-- Maria Huamani -->
+    <div class="integrantes-card">
+      <img src="/img/gladys.JPG" alt="Maria Huamani" class="integrantes-img">
+      <div style="flex: 1 1 300px;">
+        <h3 style="font-family: 'Abril Fatface', serif; font-size: 1.7rem; margin-bottom: 1rem;">Maria Huamani</h3>
+        <p style="color: #444; font-size: 1.18rem; line-height: 1.7;">Encargada de la cocina y preparación. Maria aporta dedicación y sabor a cada receta, asegurando que la calidad y el cariño estén presentes en cada plato que servimos.</p>
+      </div>
+    </div>
+</section>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('.integrantes-section');
+    if (section) {
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(section);
+    }
+    document.querySelectorAll('.integrantes-card').forEach(card => {
+      const obs = new window.IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      obs.observe(card);
+    });
+  });
+</script>
+  </div>
+</section>
