@@ -37,11 +37,41 @@
         display: block;
         margin: 0 auto;
     }
+    /* Ajustes generales para mobile */
     @media (max-width: 600px) {
         .platos-img, .slide-down-all img, .reveal img {
             max-width: 98vw;
             min-width: 0;
-            height: 180px;
+            height: 170px;
+        }
+        h1, .slide-down h1, .hero-title {
+            font-size: 2rem !important;
+            line-height: 1.1 !important;
+        }
+        h2, .platos-article h2, .cara-section h2 {
+            font-size: 1.3rem !important;
+        }
+        h3, .platos-article h3 {
+            font-size: 1.1rem !important;
+        }
+        p, .platos-article p, .cara-section p {
+            font-size: 1rem !important;
+            line-height: 1.4 !important;
+        }
+        .btn-reservar, .hero-btn {
+            font-size: 1rem !important;
+            padding: 0.9rem 1.2rem !important;
+            margin-bottom: 1.2rem !important;
+            margin-left: 0.5rem !important;
+            margin-right: 0.5rem !important;
+            width: calc(100% - 1rem) !important;
+            box-sizing: border-box !important;
+        }
+        section, .slide-down-all, .cara-section {
+            margin-top: 1.2rem !important;
+            margin-bottom: 1.2rem !important;
+            padding-top: 0.7rem !important;
+            padding-bottom: 0.7rem !important;
         }
     }
 </style>
