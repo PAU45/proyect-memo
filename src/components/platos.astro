@@ -37,7 +37,20 @@
       flex-direction: column-reverse !important;
     }
     .platos-article img {
-      max-width: 98vw !important;
+      max-width: 90vw !important;
+    }
+  }
+  @media (max-width: 600px) {
+    img {
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+      height: 500px !important;
+      object-fit: cover !important;
+      width: calc(100vw - 20px) !important;
+      max-width: calc(100vw - 20px) !important;
+      display: block !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 24px #0002 !important;
     }
   }
 </style>
@@ -85,3 +98,6 @@
       <p style="font-size: 1.15rem; color: #444; line-height: 1.7;">
         Nuestro pollo a la parrilla es marinado con especias peruanas y asado lentamente sobre brasas, logrando una piel dorada y carne jugosa. Se sirve acompañado de papas doradas y ensalada fresca, ideal para quienes buscan un sabor auténtico y saludable.
       </p>
+    </div>
+  </article>
+</section>
