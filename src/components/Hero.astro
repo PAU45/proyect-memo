@@ -50,22 +50,7 @@
         Disfruta el auténtico sabor peruano en cada bocado. Tradición, sazón y calidad en cada plato.
       </p>
       <div class="hero-btn-wrapper">
-        <a href="https://api.whatsapp.com/send/?phone=%2B51977605383&text=Hola+quiero+hacer+una+consulta&type=phone_number&app_absent=0" class="hero-btn"
-          style="
-            background: #ffb006;
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border: none;
-            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-            display: inline-block;
-            text-align: center;
-          "
-          onmouseover="this.style.background='#8d5524';this.style.transform='scale(1.06)';this.style.boxShadow='0 4px 24px #8d552444';"
-          onmouseout="this.style.background='#ffb006';this.style.transform='scale(1)';this.style.boxShadow='0 2px 12px #ffb00644';">
+        <a href="https://api.whatsapp.com/send/?phone=%2B51977605383&text=Hola+quiero+hacer+una+consulta&type=phone_number&app_absent=0" class="hero-btn">
           Reservar mesa
         </a>
        <!-- <a href="/menu" style="
@@ -92,6 +77,27 @@
       gap: 1rem;
       align-items: center;
       justify-content: flex-start;
+    }
+    .hero-btn {
+      background: #ffb006;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      display: inline-block;
+      text-align: center;
+      box-shadow: 0 2px 12px #ffb00644;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .hero-btn:hover {
+        background: #8d5524;
+        transform: scale(1.06);
+        box-shadow: 0 4px 24px #8d552444;
+      }
     }
     @media (max-width: 700px) {
       .hero-btn-wrapper {
